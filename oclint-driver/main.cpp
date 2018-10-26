@@ -151,11 +151,11 @@ static int sendAnalyticsAndExit(int exitCode)
   return exitCode;
 }
 
-static void oclintVersionPrinter()
+static void oclintVersionPrinter(raw_ostream &OS)
 {
-    outs() << "OCLint (http://oclint.org/):\n";
-    outs() << "  OCLint version " << oclint::Version::identifier() << ".\n";
-    outs() << "  Built " << __DATE__ << " (" << __TIME__ << ").\n";
+  OS << "OCLint (http://oclint.org/):\n";
+  OS << "  OCLint version " << oclint::Version::identifier() << ".\n";
+  OS << "  Built " << __DATE__ << " (" << __TIME__ << ").\n";
 }
 
 extern llvm::cl::OptionCategory OCLintOptionCategory;

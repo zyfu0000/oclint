@@ -38,7 +38,7 @@ ENDIF()
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
-SET(OCLINT_VERSION_RELEASE "0.13.1")
+SET(OCLINT_VERSION_RELEASE "0.18.10")
 
 IF(LLVM_ROOT)
     IF(NOT EXISTS ${LLVM_ROOT}/include/llvm)
@@ -90,8 +90,7 @@ IF(TEST_BUILD)
         ${GOOGLETEST_SRC}/googletest/include
         )
     LINK_DIRECTORIES(
-        ${GOOGLETEST_BUILD}
-        ${GOOGLETEST_BUILD}/gtest
+        ${GOOGLETEST_BUILD}/lib
         )
     SET(GTEST_LIBS gmock gtest)
 
