@@ -73,11 +73,11 @@ int prepare()
     return SUCCESS;
 }
 
-static void oclintDocGenVersionPrinter()
+static void oclintDocGenVersionPrinter(raw_ostream &OS)
 {
-    cout << "OCLint DocGen (http://oclint.org/docs/):\n";
-    cout << "  OCLint DocGen version " << oclint::Version::identifier() << ".\n";
-    cout << "  Built " << __DATE__ << " (" << __TIME__ << ").\n";
+    OS << "OCLint DocGen (http://oclint.org/docs/):\n";
+    OS << "  OCLint DocGen version " << oclint::Version::identifier() << ".\n";
+    OS << "  Built " << __DATE__ << " (" << __TIME__ << ").\n";
 }
 
 extern llvm::cl::OptionCategory OCLintOptionCategory;

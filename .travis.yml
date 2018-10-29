@@ -5,31 +5,31 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="test" MODULE="core" COMPILER="gcc6"
+      env: BUILD="test" MODULE="core" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="test" MODULE="metrics" COMPILER="gcc6"
+      env: BUILD="test" MODULE="metrics" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="test" MODULE="rules" DEP="core metrics" COMPILER="gcc6"
+      env: BUILD="test" MODULE="rules" DEP="core metrics" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="test" MODULE="reporters" DEP="core" COMPILER="gcc6"
+      env: BUILD="test" MODULE="reporters" DEP="core" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="test" MODULE="driver" DEP="core" COMPILER="gcc6"
+      env: BUILD="test" MODULE="driver" DEP="core" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="build" COMPILER="gcc6"
+      env: BUILD="build" COMPILER="gcc7"
     - os: linux
       dist: trusty
       sudo: required
-      env: BUILD="docgen" COMPILER="gcc6"
+      env: BUILD="docgen" COMPILER="gcc7"
     - os: osx
       osx_image: xcode10
       env: BUILD="test" MODULE="core" COMPILER="apple10"
@@ -53,12 +53,12 @@ matrix:
       env: BUILD="docgen" COMPILER="apple10"
 
 before_install:
-- if [ "$COMPILER" == "gcc6" ]; then
+- if [ "$COMPILER" == "gcc7" ]; then
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
     sudo apt-get update -q;
-    sudo apt-get install gcc-6 g++-6 -y --allow-unauthenticated;
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 50;
-    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 50;
+    sudo apt-get install gcc-7 g++-7 -y --allow-unauthenticated;
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50;
+    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50;
   fi
 - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     brew update;
