@@ -34,4 +34,4 @@ def llvm_master_branch():
     return 'trunk'
 
 def llvm_latest_release_branch():
-    return 'tags/RELEASE_700/final'
+    return '7.0.0.src.tar.xz'
