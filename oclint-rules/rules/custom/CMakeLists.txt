@@ -1,0 +1,3 @@
+
+SET(BuildMVVMRule MVVM)
+BUILD_DYNAMIC_RULES("${BuildMVVMRule}")
