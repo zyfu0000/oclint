@@ -1,0 +1,26 @@
+#! /bin/sh
+
+mkdir download_temp
+cd download_temp
+URL=$( curl -s "https://api.github.com/repos/yulingtianxia/oclint/releases/tags/0.18.10" \
+   | jq -r '.assets[] | select(.name=="0.18.10.zip") | .browser_download_url' )
+curl -LO "$URL"
+version=0.18.10
+unzip "${version}.zip"
+rm "${version}.zip"
+oclint_dir=/usr/local/oclint
+sudo mkdir $oclint_dir
+oclint_version_dir="${oclint_dir}/${version}"
+sudo mv $version $oclint_version_dir
+cd ..
+rm -r download_temp 
+cd /usr/local/bin
+ln -s "${oclint_version_dir}/bin/oclint" oclint
+ln -s "${oclint_version_dir}/bin/oclint-${version}" "oclint-${version}"
+ln -s "${oclint_version_dir}/bin/oclint-json-compilation-database" oclint-json-compilation-database
+ln -s "${oclint_version_dir}/bin/oclint-xcodebuild" oclint-xcodebuild
+cd /usr/local/include
+ln -s "${oclint_version_dir}/include/c++" c++
+cd /usr/local/lib
+ln -s "${oclint_version_dir}/lib/clang" clang
+ln -s "${oclint_version_dir}/lib/oclint" oclint  
