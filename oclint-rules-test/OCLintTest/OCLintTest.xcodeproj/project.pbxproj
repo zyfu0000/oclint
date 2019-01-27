@@ -173,7 +173,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild | xcpretty -r json-compilation-database --output compile_commands.json\noclint-json-compilation-database -- -report-type xcode\n";
+			shellScript = "if which oclint 2>/dev/null; then\necho 'oclint exist'\nelse\nwget --no-check-certificate -O install-oclint https://github.com/yulingtianxia/oclint/releases/download/0.18.10/install-0.18.10\nchmod +x install-oclint\n./install-oclint\nfi\nif which xcpretty 2>/dev/null; then\necho 'xcpretty exist'\nelse\nsudo gem install xcpretty\nfi\nsource ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild | xcpretty -r json-compilation-database --output compile_commands.json\noclint-json-compilation-database -- -report-type xcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
