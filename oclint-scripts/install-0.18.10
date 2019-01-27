@@ -2,6 +2,11 @@
 
 mkdir download_temp
 cd download_temp
+if which jq 2>/dev/null; then
+echo 'jq exist'
+else
+brew install jq
+fi
 URL=$( curl -s "https://api.github.com/repos/yulingtianxia/oclint/releases/tags/0.18.10" \
    | jq -r '.assets[] | select(.name=="0.18.10.zip") | .browser_download_url' )
 curl -LO "$URL"
@@ -9,18 +14,26 @@ version=0.18.10
 unzip "${version}.zip"
 rm "${version}.zip"
 oclint_dir=/usr/local/oclint
-sudo mkdir $oclint_dir
+sudo mkdir -p $oclint_dir
 oclint_version_dir="${oclint_dir}/${version}"
-sudo mv $version $oclint_version_dir
+sudo rm -rf $oclint_version_dir
+sudo mv -f $version $oclint_version_dir
 cd ..
-rm -r download_temp 
+rm -rf download_temp 
 cd /usr/local/bin
+rm oclint
 ln -s "${oclint_version_dir}/bin/oclint" oclint
+rm "oclint-${version}"
 ln -s "${oclint_version_dir}/bin/oclint-${version}" "oclint-${version}"
+rm oclint-json-compilation-database
 ln -s "${oclint_version_dir}/bin/oclint-json-compilation-database" oclint-json-compilation-database
+rm oclint-xcodebuild
 ln -s "${oclint_version_dir}/bin/oclint-xcodebuild" oclint-xcodebuild
 cd /usr/local/include
+rm -rf c++
 ln -s "${oclint_version_dir}/include/c++" c++
 cd /usr/local/lib
+rm -rf clang
 ln -s "${oclint_version_dir}/lib/clang" clang
+rm -rf oclint
 ln -s "${oclint_version_dir}/lib/oclint" oclint  
