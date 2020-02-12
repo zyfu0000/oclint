@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		723C49BE23F3BEEC00EF3A98 /* TestBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C49BD23F3BEEC00EF3A98 /* TestBlock.m */; };
 		A482B5D021F3582100E9DD4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A482B5CF21F3582100E9DD4F /* AppDelegate.m */; };
 		A482B5D321F3582100E9DD4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A482B5D221F3582100E9DD4F /* ViewController.m */; };
 		A482B5D521F3582200E9DD4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A482B5D421F3582200E9DD4F /* Assets.xcassets */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		723C49BC23F3BEEC00EF3A98 /* TestBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBlock.h; sourceTree = "<group>"; };
+		723C49BD23F3BEEC00EF3A98 /* TestBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBlock.m; sourceTree = "<group>"; };
 		A482B5CB21F3582100E9DD4F /* OCLintTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCLintTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A482B5CE21F3582100E9DD4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A482B5CF21F3582100E9DD4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				A482B5D921F3582200E9DD4F /* Info.plist */,
 				A482B5DA21F3582200E9DD4F /* main.m */,
 				A482B5DC21F3582200E9DD4F /* OCLintTest.entitlements */,
+				723C49BC23F3BEEC00EF3A98 /* TestBlock.h */,
+				723C49BD23F3BEEC00EF3A98 /* TestBlock.m */,
 			);
 			path = OCLintTest;
 			sourceTree = "<group>";
@@ -173,7 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which oclint 2>/dev/null; then\necho 'oclint exist'\nelse\nwget --no-check-certificate -O install-oclint https://github.com/yulingtianxia/oclint/releases/download/0.18.10/install-0.18.10\nchmod +x install-oclint\n./install-oclint\nfi\nif which xcpretty 2>/dev/null; then\necho 'xcpretty exist'\nelse\nsudo gem install xcpretty\nfi\nsource ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild | xcpretty -r json-compilation-database --output compile_commands.json\noclint-json-compilation-database -- -report-type xcode\n";
+			shellScript = "if which wget 2>/dev/null; then\necho 'wget exist'\nelse\nbrew install wget\nfi\nif which oclint 2>/dev/null; then\necho 'oclint exist'\nelse\nwget --no-check-certificate -O install-oclint https://github.com/yulingtianxia/oclint/releases/download/0.18.10/install-0.18.10\nchmod +x install-oclint\n./install-oclint\nfi\nif which xcpretty 2>/dev/null; then\necho 'xcpretty exist'\nelse\nsudo gem install xcpretty\nfi\nsource ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild | xcpretty -r json-compilation-database --output compile_commands.json\noclint-json-compilation-database -- -report-type xcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -182,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723C49BE23F3BEEC00EF3A98 /* TestBlock.m in Sources */,
 				A482B5D321F3582100E9DD4F /* ViewController.m in Sources */,
 				A482B5EC21F36EFF00E9DD4F /* TestViewModel.m in Sources */,
 				A482B5DB21F3582200E9DD4F /* main.m in Sources */,

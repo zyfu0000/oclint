@@ -1,3 +1,6 @@
 
 BUILD_TEST(MVVMRuleRuleTest
 MVVMRuleRuleTest.cpp)
+
+BUILD_TEST(FCKBlockCaptureStrongSelfRuleTest
+FCKBlockCaptureStrongSelfRuleTest.cpp)
