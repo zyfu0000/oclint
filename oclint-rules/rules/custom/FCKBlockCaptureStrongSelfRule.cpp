@@ -2054,7 +2054,7 @@ public:
             ImplicitParamDecl *decl = dyn_cast_or_null<ImplicitParamDecl>(iterator->getVariable());
             if (decl && decl->getParameterKind() == ImplicitParamDecl::ImplicitParamKind::ObjCSelf) {
                 if (!decl->isWeak()) {
-                    addViolation(decl, this, "block 强引用了 self");
+                    addViolation(node, this, "block 强引用了 self");
                 }
             }
         }

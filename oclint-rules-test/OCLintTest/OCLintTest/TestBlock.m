@@ -13,10 +13,12 @@
 - (void)testCaptureSelf
 {
 //    __weak typeof(self) weakSelf = self;
-    id block = ^{
+    void (^block)() = ^{
 //        __strong typeof(weakSelf) strongSelf = weakSelf;
         NSLog(@"self : %@", self);
     };
+    
+    block();
 }
 
 @end
