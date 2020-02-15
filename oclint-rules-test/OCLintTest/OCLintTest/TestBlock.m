@@ -3,7 +3,7 @@
 //  OCLintTest
 //
 //  Created by ZhiyangFu on 2020/2/12.
-//  Copyright © 2020 杨萧玉. All rights reserved.
+//  Copyright © 2020 4c. All rights reserved.
 //
 
 #import "TestBlock.h"
